@@ -1,4 +1,5 @@
 create schema `zalando`;
+USE zalando;
 create table `Tabla Zapatillas` (
 	id_zapatillas int auto_increment not null,
     modelo varchar (45) not null,
@@ -33,18 +34,13 @@ create table `Tabla Facturas` (
     id_empleado INT NOT NULL,
     id_cliente INT NOT NULL,
     PRIMARY KEY (id_factura),
-    INDEX `fk_Zapatillas` (`id_zapatillas` ASC),
-		CONSTRAINT `fk_Zapatillas`
-			FOREIGN KEY (`id_zapatillas`)
-			REFERENCES `Tabla Zapatillas` (id_zapatillas),
-	INDEX `fk_Empleado` (`id_empleado` ASC),
-		CONSTRAINT `fk_Empleados`
-			FOREIGN KEY (`id_empleado`)
-			REFERENCES `Tabla Empleados` (id_empleado),
-	INDEX `fk_Clientes` (`id_cliente` ASC),
-		CONSTRAINT `fk_Clientes`
+	CONSTRAINT `fk_Facturas_fk_Zapatillas`
+		FOREIGN KEY (`id_zapatillas`)
+		REFERENCES `Tabla Zapatillas` (id_zapatillas),
+	CONSTRAINT `fk_Facturas_fk_Empleados`
+		FOREIGN KEY (`id_empleado`)
+		REFERENCES `Tabla Empleados` (id_empleado),
+	CONSTRAINT `fk_Facturas_fk_Clientes`
 			FOREIGN KEY (`id_cliente`)
 			REFERENCES `Tabla Clientes` (id_cliente)
 	);
-    
-
