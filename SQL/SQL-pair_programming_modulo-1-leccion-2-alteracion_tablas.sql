@@ -1,3 +1,4 @@
+USE zalando;
 ALTER TABLE `Tabla Zapatillas`
 ADD COLUMN marca VARCHAR (45) NOT NULL,
 ADD COLUMN talla INT NOT NULL;
